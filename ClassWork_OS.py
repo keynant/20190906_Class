@@ -14,12 +14,12 @@ def findExt(path, ext):
                 print(file1)
 
 def findBiggest(path):
-    biggestSize = 0
+    biggestSize = -1
     biggestFile = ''
 
     for dirpath, dirnames, filenames in os.walk(path):
         for file1 in filenames:
-            if os.stat(dirpath + '\\' + file1).st_size > biggestSize:
+            if os.stat(os.path.join(dirpath, file1)).st_size > biggestSize:
                 biggestSize = os.stat(dirpath + '\\' + file1).st_size
                 biggestFile = dirpath + '\\' + file1
     print (f'The biggest file is {biggestFile} at {biggestSize} bytes')
